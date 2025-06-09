@@ -30,6 +30,7 @@ private:
 	int boundy;
 	int score;
 	float angle = 0;
+	float decorAngle = 0;
 	ALLEGRO_BITMAP* reimu;
 	ALLEGRO_BITMAP* yinyang;
 

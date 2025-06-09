@@ -19,7 +19,7 @@ player::player()
 
 	boundx = al_get_bitmap_width(reimu);
 	boundy = al_get_bitmap_height(reimu);
-	x = 350;
+	x = 400 - boundx/2;
 	y = 650;
 	lives = 5;
 	score = 0;
@@ -27,8 +27,11 @@ player::player()
 
 void player::DrawPlayer()
 {
+	decorAngle += 0.2;
 	//main sprite
 	al_draw_bitmap(reimu, x, y, 0);
+	al_draw_rotated_bitmap(yinyang, 32, 32, 300, 750, decorAngle, 0);
+	al_draw_rotated_bitmap(yinyang, 32, 32, 500, 750, -decorAngle, 0);
 
 	//cannon
 	al_draw_rotated_bitmap(yinyang, 32, 128, 400, 700, angle, 0);
