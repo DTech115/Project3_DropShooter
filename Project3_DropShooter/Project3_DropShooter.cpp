@@ -6,6 +6,7 @@
 #include <allegro5\allegro_image.h>
 #include <allegro5\allegro_font.h>
 #include <allegro5/allegro_ttf.h>
+#include "player.h"
 
 //moving background method!
 void scrollBackground();
@@ -24,8 +25,8 @@ const int HEIGHT = 800;
 int main()
 {
     
-    const int NUM_ArrowS = 5;
-    const int NUM_ghostS = 10;
+    const int numBullets = 20;
+    const int numEnemies = 10;
     enum KEYS { UP, DOWN, LEFT, RIGHT, SPACE };
     bool keys[5] = { false, false, false, false, false };
 
@@ -58,9 +59,9 @@ int main()
     ALLEGRO_FONT* mainFont = al_load_font("DFPPOPCorn-W12.ttf", 18, 0);		//font
 
     //object variables
-    /*player myPlayer(HEIGHT);
-    Arrow Arrows[NUM_ArrowS];
-    ghost ghosts[NUM_ghostS];*/
+    player myPlayer;
+    /*bullet bullets[numBullets];
+    enemy enemies[numEnemies];*/
 
     event_queue = al_create_event_queue();
     timer = al_create_timer(1.0 / FPS);
@@ -88,11 +89,7 @@ int main()
         {
             redraw = true;
 
-            scrollBackground();
-            al_draw_bitmap(moon, 140, 60, 0);
-           
-            al_flip_display();
-            al_clear_to_color(al_map_rgb(0, 0, 0));
+            
 
             /*Left Keyboard Call
                 Call rotate cannon
@@ -129,9 +126,9 @@ int main()
                 break;
             case ALLEGRO_KEY_SPACE:
                 keys[SPACE] = true;
-                /*for (int i = 0; i < NUM_SNOWBALLS; i++)
-                    snowballs.FireSnowballs(penguinFiring);*/
-                break;
+               /* for (int i = 0; i < numBullets; i++)
+                    bullets.fire(myPlayer);
+                break;*/
             }
         }
         else if (ev.type == ALLEGRO_EVENT_KEY_UP)
@@ -161,12 +158,19 @@ int main()
         if (redraw && al_is_event_queue_empty(event_queue))
         {
             redraw = false;
+
+            scrollBackground();
+            al_draw_bitmap(moon, 140, 40, 0);
+
+            myPlayer.DrawPlayer();
+
             /*draw background
                 draw iceberg
                 draw penguinFiring
                 draw snowballs
                 draw penguin Dropping
                 al_flip_display();*/
+            al_flip_display();
             al_clear_to_color(al_map_rgb(0, 0, 0));
         }
     }
