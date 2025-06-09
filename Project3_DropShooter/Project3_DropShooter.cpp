@@ -12,9 +12,11 @@ void scrollBackground();
 
 //background global vars & dimensions
 ALLEGRO_BITMAP* bg = NULL;
+ALLEGRO_BITMAP* moon = NULL;
 float bg_y1 = 0;
 float bg_y2 = 0;
 float scroll_speed = 2.0;
+float moonAngle = 0.0;
 
 const int WIDTH = 800;
 const int HEIGHT = 800;
@@ -71,11 +73,8 @@ int main()
 
     al_start_timer(timer);
 
-    bg = al_load_bitmap("background.jpg");
-    if (!bg) {
-        std::cout << "Failed to load background.jpg ;~;\n";
-        return -1;
-    }
+    bg = al_load_bitmap("background.png");
+    moon = al_load_bitmap("moon.png");
 
     bg_y1 = 0;
     bg_y2 = -al_get_bitmap_height(bg);
@@ -90,6 +89,7 @@ int main()
             redraw = true;
 
             scrollBackground();
+            al_draw_bitmap(moon, 140, 60, 0);
            
             al_flip_display();
             al_clear_to_color(al_map_rgb(0, 0, 0));
@@ -179,6 +179,7 @@ void scrollBackground() {
     // Move both backgrounds down
     bg_y1 += scroll_speed;
     bg_y2 += scroll_speed;
+    //moonAngle += 0.007;
 
     // Reset if they're off screen
     if (bg_y1 >= HEIGHT)
@@ -189,4 +190,6 @@ void scrollBackground() {
     // Draw both bitmaps
     al_draw_bitmap(bg, 0, bg_y1, 0);
     al_draw_bitmap(bg, 0, bg_y2, 0);
+    //al_draw_rotated_bitmap(moon, al_get_bitmap_width(moon) / 2.0, al_get_bitmap_width(moon) / 2.0, 400, 300, moonAngle, 0);
+
 }
