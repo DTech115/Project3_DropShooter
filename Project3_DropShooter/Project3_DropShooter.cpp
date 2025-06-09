@@ -27,8 +27,8 @@ int main()
     
     const int numBullets = 20;
     const int numEnemies = 10;
-    enum KEYS { UP, DOWN, LEFT, RIGHT, SPACE };
-    bool keys[5] = { false, false, false, false, false };
+    enum KEYS { LEFT, RIGHT, SPACE };
+    bool keys[3] = { false, false, false };
 
     //primitive variable
     bool done = false;
@@ -89,7 +89,11 @@ int main()
         {
             redraw = true;
 
-            
+            if (keys[LEFT])
+                myPlayer.MoveLeft();
+            if (keys[RIGHT])
+                myPlayer.MoveRight();
+
 
             /*Left Keyboard Call
                 Call rotate cannon
@@ -112,12 +116,6 @@ int main()
             case ALLEGRO_KEY_ESCAPE:
                 done = true;
                 break;
-            case ALLEGRO_KEY_UP:
-                keys[UP] = true;
-                break;
-            case ALLEGRO_KEY_DOWN:
-                keys[DOWN] = true;
-                break;
             case ALLEGRO_KEY_LEFT:
                 keys[LEFT] = true;
                 break;
@@ -137,12 +135,6 @@ int main()
             {
             case ALLEGRO_KEY_ESCAPE:
                 done = true;
-                break;
-            case ALLEGRO_KEY_UP:
-                keys[UP] = false;
-                break;
-            case ALLEGRO_KEY_DOWN:
-                keys[DOWN] = false;
                 break;
             case ALLEGRO_KEY_LEFT:
                 keys[LEFT] = false;

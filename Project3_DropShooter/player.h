@@ -29,7 +29,9 @@ private:
 	int boundx;
 	int boundy;
 	int score;
+	float angle = 0;
 	ALLEGRO_BITMAP* reimu;
+	ALLEGRO_BITMAP* yinyang;
 
 };
 #endif
