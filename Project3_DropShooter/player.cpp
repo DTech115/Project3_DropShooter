@@ -27,23 +27,27 @@ player::player()
 
 void player::DrawPlayer()
 {
+	//main sprite
 	al_draw_bitmap(reimu, x, y, 0);
-	al_draw_rotated_bitmap(yinyang, 32, 32, 400, 600, angle, 0);
+
+	//cannon
+	al_draw_rotated_bitmap(yinyang, 32, 128, 400, 700, angle, 0);
 }
 
+//converted to radians
 void player::MoveLeft()
 {
 	angle -= 0.1;
-	if (angle < 0)
+	if (angle < -1)
 	{
-		angle += ALLEGRO_PI * 2;
-	}
-	if (angle < 1.5 && angle> 0.5)
-	{
-		angle = 1.5;
+		angle = -1;
 	}
 }
 void player::MoveRight()
 {
-	
+	angle += 0.1;
+	if (angle > 1.0)
+	{
+		angle = 1.0;
+	}
 }
