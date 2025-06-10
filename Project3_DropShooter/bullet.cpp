@@ -12,7 +12,7 @@ bullet::bullet()
 	y = 700;
 	speed = 10;
 	live = false;
-	seal = al_load_bitmap("yinyang.png");
+	seal = al_load_bitmap("seal.png");
 }
 bullet::~bullet()
 {
@@ -21,8 +21,8 @@ bullet::~bullet()
 void bullet::drawBullet()
 {
 	if (live)
-		al_draw_bitmap(seal, x+10, y+30, 0);
-		//al_draw_rotated_bitmap(seal, al_get_bitmap_width(seal) / 2, al_get_bitmap_height(seal) / 2, x, y, 90, 0);
+		//al_draw_bitmap(seal, x+10, y+30, 0);
+		al_draw_rotated_bitmap(seal, al_get_bitmap_width(seal) / 2, al_get_bitmap_height(seal) / 2, x+40, y+50, radian_angle, 0);
 
 }
 void bullet::fireBullet(player& Player)
