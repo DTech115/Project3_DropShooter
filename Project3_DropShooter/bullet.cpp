@@ -13,6 +13,8 @@ bullet::bullet()
 	speed = 10;
 	live = false;
 	seal = al_load_bitmap("seal.png");
+	boundx = al_get_bitmap_width(seal);
+	boundy = al_get_bitmap_height(seal);
 }
 bullet::~bullet()
 {
@@ -20,10 +22,9 @@ bullet::~bullet()
 }
 void bullet::drawBullet()
 {
-	if (live)
-		//al_draw_bitmap(seal, x+10, y+30, 0);
-		al_draw_rotated_bitmap(seal, al_get_bitmap_width(seal) / 2, al_get_bitmap_height(seal) / 2, x+40, y+50, radian_angle, 0);
-
+	if (live) {
+		al_draw_rotated_bitmap(seal, al_get_bitmap_width(seal) / 2, al_get_bitmap_height(seal) / 2, x + 40, y + 50, radian_angle, 0);
+	}
 }
 void bullet::fireBullet(player& Player)
 {
@@ -49,25 +50,25 @@ void bullet::updateBullet(int WIDTH, player& Player)
 			live = false;
 	}
 }
-//void bullet::collideBullet(enemy enemy[], player& Player, int cSize)
-//{
-//	if (live)
-//	{
-//		for (int j = 0; j < cSize; j++)
-//		{
-//			if (enemy[j].getLive())
-//			{
-//				if (x > (enemy[j].getX() - enemy[j].getBoundX()) &&
-//					x < (enemy[j].getX() + enemy[j].getBoundX()) &&
-//					y >(enemy[j].getY() - enemy[j].getBoundY()) &&
-//					y < (enemy[j].getY() + enemy[j].getBoundY()))
-//				{
-//					live = false;
-//					enemy[j].setLive(false);
-//					Player.increaseScore();				// increases score upon hitting a ghost!!!
-//				}
-//			}
-//		}
-//	}
-//
-//}
+void bullet::collideBullet(enemy enemy[], player& Player, int cSize)
+{
+	if (live)
+	{
+		for (int j = 0; j < cSize; j++)
+		{
+			if (enemy[j].getLive())
+			{
+				if (x > (enemy[j].getX() - enemy[j].getBoundX()) &&
+					x < (enemy[j].getX() + enemy[j].getBoundX()) &&
+					y >(enemy[j].getY() - enemy[j].getBoundY()) &&
+					y < (enemy[j].getY() + enemy[j].getBoundY()))
+				{
+					live = false;
+					enemy[j].setLive(false);
+					Player.increaseScore();				// increases score upon hit!!!
+				}
+			}
+		}
+	}
+
+}

@@ -17,9 +17,9 @@ player::player()
 	reimu = al_load_bitmap("reimu.png");
 	yinyang = al_load_bitmap("yinyang.png");
 
-	boundx = al_get_bitmap_width(reimu);
-	boundy = al_get_bitmap_height(reimu);
-	x = 400 - boundx/2;
+	boundx = 800;
+	boundy = 50;
+	x = 355;
 	y = 650;
 	lives = 5;
 	score = 0;

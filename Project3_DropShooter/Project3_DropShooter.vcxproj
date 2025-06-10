@@ -81,7 +81,7 @@
     <Allegro_AddonMemfile>true</Allegro_AddonMemfile>
     <Allegro_AddonFont>true</Allegro_AddonFont>
     <Allegro_AddonColor>true</Allegro_AddonColor>
-    <TargetName>Touhou 30</TargetName>
+    <TargetName>Touhou 30 Scarlet Phantasm ~ Midnight Bullet Ballet of 12,000 Forgotten Maidens</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

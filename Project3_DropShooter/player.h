@@ -9,8 +9,6 @@ public:
 	player();
 	~player();
 	void DrawPlayer();
-	void MoveUp();
-	void MoveDown(int HEIGHT);
 	void MoveLeft();
 	void MoveRight();
 	int getBoundX() { return boundx; }

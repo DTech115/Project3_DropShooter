@@ -26,7 +26,7 @@ const int HEIGHT = 800;
 int main()
 {
     
-    const int numBullets = 20;
+    const int numBullets = 10;
     const int numEnemies = 10;
     enum KEYS { LEFT, RIGHT, SPACE };
     bool keys[3] = { false, false, false };
@@ -62,7 +62,7 @@ int main()
     //object variables
     player myPlayer;
     bullet bullets[numBullets];
-    //enemy enemies[numEnemies];
+    enemy enemies[numEnemies];
 
     event_queue = al_create_event_queue();
     timer = al_create_timer(1.0 / FPS);
@@ -96,16 +96,16 @@ int main()
                 myPlayer.MoveRight();
             for (int i = 0; i < numBullets; i++)
                 bullets[i].updateBullet(WIDTH, myPlayer);
+            for (int i = 0; i < numEnemies; i++)
+                enemies[i].startEnemy(WIDTH, HEIGHT);
+            for (int i = 0; i < numEnemies; i++)
+                enemies[i].updateEnemy();
+            for (int i = 0; i < numBullets; i++) {
+                bullets[i].collideBullet(enemies, myPlayer, numBullets);
+            }
+            for (int i = 0; i < numEnemies; i++)
+                enemies[i].collideEnemy(myPlayer);
 
-            /*Left Keyboard Call
-                Call rotate cannon
-                Right Keyboard
-                Call rotate cannon
-                Update Snowballs
-                Start Penguins Dropping
-                Update Penguins Dropping
-                Collide Snowballs
-                Collide Penguins*/
         }
         else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
         {
@@ -160,14 +160,10 @@ int main()
             for (int i = 0; i < numBullets; i++) {
                 bullets[i].drawBullet();
             }
-
-            /*draw background
-                draw iceberg
-                draw penguinFiring
-                draw snowballs
-                draw penguin Dropping
-                */
-
+            for (int i = 0; i < numEnemies; i++) {
+                enemies[i].drawEnemy();
+            }
+            
             al_flip_display();
             al_clear_to_color(al_map_rgb(0, 0, 0));
         }
