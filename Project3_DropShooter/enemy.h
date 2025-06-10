@@ -25,6 +25,7 @@ private:
     int speed;
     int boundx;
     int boundy;
+    bool collided;
     ALLEGRO_BITMAP* cirno;
     ALLEGRO_BITMAP* cirno_dead;
 };

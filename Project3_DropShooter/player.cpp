@@ -82,9 +82,9 @@ void player::DrawPlayer()
 	else if (lives == 5) {
 		al_draw_bitmap(reimu, x, y, 0);
 		al_draw_rotated_bitmap(yinyangL1, 32, 32, 300, 750, decorAngle, 0);
-		al_draw_rotated_bitmap(yinyangR2, 32, 32, 500, 750, -decorAngle, 0);
+		al_draw_rotated_bitmap(yinyangR1, 32, 32, 500, 750, -decorAngle, 0);
 		al_draw_bitmap(giantsealL1, x - 250, y, 0);
-		al_draw_bitmap(giantsealL2, x + 270, y, 0);
+		al_draw_bitmap(giantsealR1, x + 270, y, 0);
 	}
 	else if (lives == 4) {
 		al_draw_bitmap(reimu, x, y, 0);
