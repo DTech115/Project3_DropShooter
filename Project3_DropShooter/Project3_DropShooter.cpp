@@ -56,8 +56,8 @@ int main()
     al_init_font_addon();
     al_init_ttf_addon();
 
-    ALLEGRO_FONT* gameoverFont = al_load_font("DFPPOPCorn-W12.ttf", 32, 0);		//game font
-    ALLEGRO_FONT* mainFont = al_load_font("DFPPOPCorn-W12.ttf", 18, 0);		//font
+    ALLEGRO_FONT* gameoverFont = al_load_font("DFPPOPCorn-W12.ttf", 64, 0);		//gameover font
+    ALLEGRO_FONT* mainFont = al_load_font("DFPPOPCorn-W12.ttf", 32, 0);		//font
 
     //object variables
     player myPlayer;
@@ -106,6 +106,9 @@ int main()
             for (int i = 0; i < numEnemies; i++)
                 enemies[i].collideEnemy(myPlayer);
 
+            if (myPlayer.getLives() <= 0) {
+                gameOver = true;
+            }
         }
         else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
         {
@@ -163,7 +166,13 @@ int main()
             for (int i = 0; i < numEnemies; i++) {
                 enemies[i].drawEnemy();
             }
-            
+            if (gameOver) {	
+                al_draw_text(gameoverFont, al_map_rgb(0, 0, 200), WIDTH / 2, HEIGHT / 2, ALLEGRO_ALIGN_CENTER, "GAME OVER!");
+                al_draw_textf(mainFont, al_map_rgb(255, 255, 255), WIDTH / 2, (HEIGHT / 2) + 100, ALLEGRO_ALIGN_CENTER, "FAIRIES DEFEATED: %i", myPlayer.getScore());
+                al_flip_display();
+                al_rest(5);
+                done = true;
+            }
             al_flip_display();
             al_clear_to_color(al_map_rgb(0, 0, 0));
         }
@@ -171,6 +180,13 @@ int main()
 
     al_destroy_bitmap(bg);
     al_destroy_bitmap(moon);
+    al_destroy_font(gameoverFont);
+    al_destroy_font(mainFont);
+    al_destroy_event_queue(event_queue);
+    al_destroy_timer(timer);
+    al_destroy_display(display);						//destroy our display object
+    system("Pause");
+    return 0;
 }
 
 

@@ -109,10 +109,16 @@ void player::DrawPlayer()
 	else if (lives == 1) {
 		al_draw_bitmap(reimu, x, y, 0);
 		al_draw_rotated_bitmap(yinyangL5, 32, 32, 300, 750, decorAngle, 0);
-		al_draw_rotated_bitmap(yinyangL5, 32, 32, 500, 750, -decorAngle, 0);
+		al_draw_rotated_bitmap(yinyangR5, 32, 32, 500, 750, -decorAngle, 0);
 	}
 	else {
-		
+		al_draw_bitmap(power, 400, 760, 0);
+		al_draw_bitmap(power, 365, 750, 0);
+		al_draw_bitmap(power, 420, 690, 0);
+		al_draw_bitmap(power, 435, 730, 0);
+		al_draw_bitmap(power, 385, 754, 0);
+		al_draw_bitmap(power, 390, 710, 0);
+
 	}
 	
 	//cannon
