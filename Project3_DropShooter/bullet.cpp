@@ -10,7 +10,7 @@ bullet::bullet()
 {
 	x = 400;
 	y = 700;
-	speed = 10;
+	speed = 15;
 	live = false;
 	seal = al_load_bitmap("seal.png");
 	boundx = al_get_bitmap_width(seal);

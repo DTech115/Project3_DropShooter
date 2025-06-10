@@ -18,7 +18,6 @@ player::~player()
 	al_destroy_bitmap(giantsealR2);
 	al_destroy_bitmap(giantsealR3);
 	al_destroy_bitmap(giantsealR4);
-	al_destroy_bitmap(emptyseal);
 
 	al_destroy_bitmap(yinyangL1);
 	al_destroy_bitmap(yinyangL2);
@@ -58,10 +57,8 @@ player::player()
 	giantsealR2 = al_load_bitmap("giantsealR2.png");
 	giantsealR3 = al_load_bitmap("giantsealR3.png");
 	giantsealR4 = al_load_bitmap("giantsealR4.png");
-	emptyseal = al_load_bitmap("emptyseal.png");
 
 	power = al_load_bitmap("power.png");
-
 
 	boundx = 800;
 	boundy = 50;
@@ -75,22 +72,49 @@ void player::DrawPlayer()
 {
 	decorAngle += 0.2;
 	//main sprite
-	/*if (lives >= 5) {
+	if (lives >= 6) {
+		al_draw_bitmap(reimu, x, y, 0);
+		al_draw_rotated_bitmap(yinyang, 32, 32, 300, 750, decorAngle, 0);
+		al_draw_rotated_bitmap(yinyang, 32, 32, 500, 750, -decorAngle, 0);
+		al_draw_bitmap(giantseal, x - 250, y, 0);
+		al_draw_bitmap(giantseal, x + 270, y, 0);
+	}
+	else if (lives == 5) {
+		al_draw_bitmap(reimu, x, y, 0);
+		al_draw_rotated_bitmap(yinyangL1, 32, 32, 300, 750, decorAngle, 0);
+		al_draw_rotated_bitmap(yinyangR2, 32, 32, 500, 750, -decorAngle, 0);
+		al_draw_bitmap(giantsealL1, x - 250, y, 0);
+		al_draw_bitmap(giantsealL2, x + 270, y, 0);
 	}
 	else if (lives == 4) {
+		al_draw_bitmap(reimu, x, y, 0);
+		al_draw_rotated_bitmap(yinyangL2, 32, 32, 300, 750, decorAngle, 0);
+		al_draw_rotated_bitmap(yinyangR2, 32, 32, 500, 750, -decorAngle, 0);
+		al_draw_bitmap(giantsealL2, x - 250, y, 0);
+		al_draw_bitmap(giantsealR2, x + 270, y, 0);
 	}
 	else if (lives == 3) {
+		al_draw_bitmap(reimu, x, y, 0);
+		al_draw_rotated_bitmap(yinyangL3, 32, 32, 300, 750, decorAngle, 0);
+		al_draw_rotated_bitmap(yinyangR3, 32, 32, 500, 750, -decorAngle, 0);
+		al_draw_bitmap(giantsealL3, x - 250, y, 0);
+		al_draw_bitmap(giantsealR3, x + 270, y, 0);
 	}
 	else if (lives == 2) {
+		al_draw_bitmap(reimu, x, y, 0);
+		al_draw_rotated_bitmap(yinyangL4, 32, 32, 300, 750, decorAngle, 0);
+		al_draw_rotated_bitmap(yinyangR4, 32, 32, 500, 750, -decorAngle, 0);
+		al_draw_bitmap(giantsealR4, x + 270, y, 0);
 	}
-	else if (lives <= 1) {
-	}*/
-	al_draw_bitmap(reimu, x, y, 0);
-	al_draw_rotated_bitmap(yinyang, 32, 32, 300, 750, decorAngle, 0);
-	al_draw_rotated_bitmap(yinyang, 32, 32, 500, 750, -decorAngle, 0);
-	al_draw_bitmap(giantseal, x-250, y, 0);
-	al_draw_bitmap(giantseal, x + 270, y, 0);
-
+	else if (lives == 1) {
+		al_draw_bitmap(reimu, x, y, 0);
+		al_draw_rotated_bitmap(yinyangL5, 32, 32, 300, 750, decorAngle, 0);
+		al_draw_rotated_bitmap(yinyangL5, 32, 32, 500, 750, -decorAngle, 0);
+	}
+	else {
+		
+	}
+	
 	//cannon
 	al_draw_rotated_bitmap(yinyang, 32, 128, 400, 700, angle, 0);
 }

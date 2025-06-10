@@ -62,6 +62,7 @@ void enemy::collideEnemy(player& Player)
 			y + boundy > Player.getY() - Player.getBoundY())
 		{
 			Player.removeLife();
+			live = false;
 		}
 		if (y > 800)
 		{

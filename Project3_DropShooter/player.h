@@ -46,11 +46,9 @@ private:
 	ALLEGRO_BITMAP* yinyangR5;
 
 	ALLEGRO_BITMAP* giantseal;
-	ALLEGRO_BITMAP* emptyseal;
 	ALLEGRO_BITMAP* giantsealL1;
 	ALLEGRO_BITMAP* giantsealL2;
 	ALLEGRO_BITMAP* giantsealL3;
-
 	ALLEGRO_BITMAP* giantsealR1;
 	ALLEGRO_BITMAP* giantsealR2;
 	ALLEGRO_BITMAP* giantsealR3;
