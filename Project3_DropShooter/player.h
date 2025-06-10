@@ -18,6 +18,7 @@ public:
 	int getX() { return x; }
 	int getY() { return y; }
 	void removeLife() { lives--; }
+	float getAngle() { return angle; }
 
 	int getLives() { return lives; }	// returns lives for lives check
 	void increaseScore() { score++; }	//increases score :]

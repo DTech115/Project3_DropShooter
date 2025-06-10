@@ -7,6 +7,7 @@
 #include <allegro5\allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 #include "player.h"
+#include "bullet.h"
 
 //moving background method!
 void scrollBackground();
@@ -60,8 +61,8 @@ int main()
 
     //object variables
     player myPlayer;
-    /*bullet bullets[numBullets];
-    enemy enemies[numEnemies];*/
+    bullet bullets[numBullets];
+    //enemy enemies[numEnemies];
 
     event_queue = al_create_event_queue();
     timer = al_create_timer(1.0 / FPS);
@@ -93,7 +94,8 @@ int main()
                 myPlayer.MoveLeft();
             if (keys[RIGHT])
                 myPlayer.MoveRight();
-
+            for (int i = 0; i < numBullets; i++)
+                bullets[i].updateBullet(WIDTH, myPlayer);
 
             /*Left Keyboard Call
                 Call rotate cannon
@@ -124,9 +126,9 @@ int main()
                 break;
             case ALLEGRO_KEY_SPACE:
                 keys[SPACE] = true;
-               /* for (int i = 0; i < numBullets; i++)
-                    bullets.fire(myPlayer);
-                break;*/
+                for (int i = 0; i < numBullets; i++)
+                    bullets[i].fireBullet(myPlayer);
+                break;
             }
         }
         else if (ev.type == ALLEGRO_EVENT_KEY_UP)
@@ -155,19 +157,24 @@ int main()
             al_draw_bitmap(moon, 140, 40, 0);
 
             myPlayer.DrawPlayer();
+            for (int i = 0; i < numBullets; i++) {
+                bullets[i].drawBullet();
+            }
 
             /*draw background
                 draw iceberg
                 draw penguinFiring
                 draw snowballs
                 draw penguin Dropping
-                al_flip_display();*/
+                */
+
             al_flip_display();
             al_clear_to_color(al_map_rgb(0, 0, 0));
         }
     }
 
     al_destroy_bitmap(bg);
+    al_destroy_bitmap(moon);
 }
 
 
