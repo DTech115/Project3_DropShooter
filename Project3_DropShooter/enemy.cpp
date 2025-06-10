@@ -17,6 +17,7 @@ enemy::enemy()
 enemy::~enemy()
 {
 	al_destroy_bitmap(cirno);
+	al_destroy_bitmap(cirno_dead);
 }
 
 void enemy::drawEnemy()

@@ -9,6 +9,7 @@ player::~player()
 {
 	al_destroy_bitmap(reimu);
 	al_destroy_bitmap(yinyang);
+	al_destroy_bitmap(giantseal);
 
 }
 player::player()
@@ -16,6 +17,7 @@ player::player()
 
 	reimu = al_load_bitmap("reimu.png");
 	yinyang = al_load_bitmap("yinyang.png");
+	giantseal = al_load_bitmap("giantseal.png");
 
 	boundx = 800;
 	boundy = 50;
@@ -32,6 +34,8 @@ void player::DrawPlayer()
 	al_draw_bitmap(reimu, x, y, 0);
 	al_draw_rotated_bitmap(yinyang, 32, 32, 300, 750, decorAngle, 0);
 	al_draw_rotated_bitmap(yinyang, 32, 32, 500, 750, -decorAngle, 0);
+	al_draw_bitmap(giantseal, x-250, y, 0);
+	al_draw_bitmap(giantseal, x + 270, y, 0);
 
 	//cannon
 	al_draw_rotated_bitmap(yinyang, 32, 128, 400, 700, angle, 0);
