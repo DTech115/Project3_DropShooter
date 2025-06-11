@@ -18,7 +18,7 @@ ALLEGRO_BITMAP* moon = NULL;
 float bg_y1 = 0;
 float bg_y2 = 0;
 float scroll_speed = 2.0;
-float moonAngle = 0.0;
+//float moonAngle = 0.0;
 
 const int WIDTH = 800;
 const int HEIGHT = 800;
@@ -156,6 +156,7 @@ int main()
         {
             redraw = false;
 
+            //background draw
             scrollBackground();
             al_draw_bitmap(moon, 140, 40, 0);
 
@@ -190,19 +191,19 @@ int main()
 }
 
 
+// method for moving background down the screen
 void scrollBackground() {
-    // Move both backgrounds down
+    // move both backgrounds down
     bg_y1 += scroll_speed;
     bg_y2 += scroll_speed;
     //moonAngle += 0.007;
 
-    // Reset if they're off screen
+    // reset if they're off screen
     if (bg_y1 >= HEIGHT)
         bg_y1 = bg_y2 - al_get_bitmap_height(bg);
     if (bg_y2 >= HEIGHT)
         bg_y2 = bg_y1 - al_get_bitmap_height(bg);
 
-    // Draw both bitmaps
     al_draw_bitmap(bg, 0, bg_y1, 0);
     al_draw_bitmap(bg, 0, bg_y2, 0);
     //al_draw_rotated_bitmap(moon, al_get_bitmap_width(moon) / 2.0, al_get_bitmap_width(moon) / 2.0, 400, 300, moonAngle, 0);
